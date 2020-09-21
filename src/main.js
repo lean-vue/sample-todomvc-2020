@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+// TodoMVC styles
+import 'todomvc-app-css/index.css';
+
 Vue.config.productionTip = false
 
 new Vue({
