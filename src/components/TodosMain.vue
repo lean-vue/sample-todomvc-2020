@@ -1,6 +1,5 @@
 <template>
-  <!-- This section should be hidden by default and shown when there are todos -->
-  <section class="main">
+  <section class="main" v-if="hasTodos">
     <input id="toggle-all" class="toggle-all" type="checkbox" :checked="$store.getters['todos/isAllDone']">
     <label for="toggle-all">Mark all as complete</label>
     <TodosList></TodosList>
@@ -9,9 +8,11 @@
 
 <script>
 import TodosList from '@/components/TodosList';
+import { mapGetters } from 'vuex';
 export default {
   name: "TodosMain",
-  components: {TodosList}
+  components: {TodosList},
+  computed: mapGetters('todos', ['hasTodos'])
 }
 </script>
 
