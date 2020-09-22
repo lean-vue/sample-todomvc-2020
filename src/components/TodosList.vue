@@ -12,7 +12,7 @@ export default {
   components: {TodosItem},
   computed: {
     todos() {
-      return this.$store.state.list;
+      return this.$store.state.todos.list;
     }
   }
 }

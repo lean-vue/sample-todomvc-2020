@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 
 // Vuex
 Vue.use(Vuex);
-const store = new Vuex.Store(todos);
+const store = new Vuex.Store({ modules: { todos } });
 
 new Vue({
   render: h => h(App),
