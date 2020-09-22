@@ -6,10 +6,15 @@
 
 <script>
 import TodosItem from '@/components/TodosItem';
+import store from '@/store/todos';
 export default {
   name: "TodosList",
-  props: ['todos'],
-  components: {TodosItem}
+  components: {TodosItem},
+  computed: {
+    todos() {
+      return store.state.list;
+    }
+  }
 }
 </script>
 
