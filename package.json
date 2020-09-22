@@ -10,8 +10,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "todomvc-app-css": "^2.3.0",
     "vue": "^2.6.11",
-    "todomvc-app-css": "^2.3.0"
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
