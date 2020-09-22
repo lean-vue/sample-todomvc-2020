@@ -13,9 +13,16 @@
 import TodosInput from '@/components/TodosInput';
 import TodosMain from '@/components/TodosMain';
 import TodosActionbar from '@/components/TodosActionbar';
+import {getAllTodos} from '@/api/local-persistence';
 
 export default {
-name: "TodosShell",
+  name: "TodosShell",
+  data: () => ({
+    todos: []
+  }),
+  async created() {
+    this.todos = await getAllTodos();
+  },
   components: {TodosActionbar, TodosMain, TodosInput}
 }
 </script>
