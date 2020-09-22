@@ -2,7 +2,7 @@
   <section class="todoapp">
     <header class="header">
       <h1>todos</h1>
-      <TodosInput></TodosInput>
+      <TodosInput @create-todo="createTodo"></TodosInput>
     </header>
     <TodosMain :todos="todos"></TodosMain>
     <TodosActionbar></TodosActionbar>
@@ -13,7 +13,7 @@
 import TodosInput from '@/components/TodosInput';
 import TodosMain from '@/components/TodosMain';
 import TodosActionbar from '@/components/TodosActionbar';
-import {getAllTodos} from '@/api/local-persistence';
+import {createTodo, getAllTodos} from '@/api/local-persistence';
 
 export default {
   name: "TodosShell",
@@ -22,6 +22,12 @@ export default {
   }),
   async created() {
     this.todos = await getAllTodos();
+  },
+  methods: {
+    async createTodo(title) {
+      const todo = await createTodo(title);
+      this.todos.push(todo);
+    }
   },
   components: {TodosActionbar, TodosMain, TodosInput}
 }
