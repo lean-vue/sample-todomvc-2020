@@ -17,7 +17,7 @@ export default {
   props: ['todo'],
   methods: {
     toggle() {
-      this.$store.dispatch('toggleTodo', this.todo.id);
+      this.$store.dispatch('todos/toggleTodo', this.todo.id);
     }
   }
 }

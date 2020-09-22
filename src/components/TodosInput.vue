@@ -15,7 +15,7 @@ export default {
     createTodo() {
       if (!this.title) return;
 
-      this.$store.dispatch('createTodo', this.title);
+      this.$store.dispatch('todos/createTodo', this.title);
       this.title = '';
     }
   }

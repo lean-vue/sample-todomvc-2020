@@ -1,6 +1,8 @@
 import {createTodo, getAllTodos, updateTodo} from '@/api/local-persistence';
 
 export default {
+    namespaced: true,
+
     state: {
         list: []
     },
