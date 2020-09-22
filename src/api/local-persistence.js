@@ -12,10 +12,10 @@ export async function getAllTodos() {
 }
 
 export async function createTodo(title) {
-    const todo = { id: _generateId, title, completed: false };
+    const todo = { id: _generateId(), title, completed: false };
     
     const todos = _loadTodos();
-    todos.push(todos);
+    todos.push(todo);
     _saveTodos(todos);
 
     return todo;
