@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 export default {
   name: "TodosInput",
   data: () => ({
@@ -14,7 +15,7 @@ export default {
     createTodo() {
       if (!this.title) return;
 
-      this.$emit('create-todo', this.title);
+      this.$store.dispatch('createTodo', this.title);
       this.title = '';
     }
   }

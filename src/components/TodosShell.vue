@@ -2,7 +2,7 @@
   <section class="todoapp">
     <header class="header">
       <h1>todos</h1>
-      <TodosInput @create-todo="createTodo"></TodosInput>
+      <TodosInput></TodosInput>
     </header>
     <TodosMain></TodosMain>
     <TodosActionbar></TodosActionbar>
@@ -18,11 +18,6 @@ export default {
   name: "TodosShell",
   created() {
     this.$store.dispatch('loadTodos');
-  },
-  methods: {
-    createTodo(title) {
-      this.$store.dispatch('createTodo', title);
-    },
   },
   components: {TodosActionbar, TodosMain, TodosInput}
 }
