@@ -3,7 +3,7 @@
   <section class="main">
     <input id="toggle-all" class="toggle-all" type="checkbox">
     <label for="toggle-all">Mark all as complete</label>
-    <TodosList :todos="todos" @toggle-todo="$emit('toggle-todo', $event)"></TodosList>
+    <TodosList :todos="todos"></TodosList>
   </section>
 </template>
 

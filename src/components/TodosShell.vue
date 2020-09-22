@@ -4,7 +4,7 @@
       <h1>todos</h1>
       <TodosInput @create-todo="createTodo"></TodosInput>
     </header>
-    <TodosMain :todos="state.list" @toggle-todo="toggleTodo"></TodosMain>
+    <TodosMain :todos="state.list"></TodosMain>
     <TodosActionbar></TodosActionbar>
   </section>
 </template>
@@ -28,9 +28,6 @@ export default {
     createTodo(title) {
       store.actions.createTodo(title);
     },
-    toggleTodo(id) {
-      store.actions.toggleTodo(id);
-    }
   },
   components: {TodosActionbar, TodosMain, TodosInput}
 }
