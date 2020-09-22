@@ -1,4 +1,4 @@
-import {createTodo, getAllTodos} from './local-persistence.js';
+import {createTodo, getAllTodos, updateTodo} from './local-persistence.js';
 
 describe('Local Persistence', () => {
 
@@ -15,4 +15,10 @@ describe('Local Persistence', () => {
         expect(todo.completed).toBeFalsy();
     });
 
+    it('can update todo items', async () => {
+        const todo = await createTodo('Unit Testing');
+        const updatedTodo = await updateTodo(todo.id, { completed: true });
+
+        expect(updatedTodo.completed).toBeTruthy();
+    });
 });
