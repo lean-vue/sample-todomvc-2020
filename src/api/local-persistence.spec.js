@@ -1,4 +1,4 @@
-import {createTodo, getAllTodos, updateTodo} from './local-persistence.js';
+import {createTodo, deleteTodo, getAllTodos, updateTodo} from './local-persistence.js';
 
 describe('Local Persistence', () => {
 
@@ -20,5 +20,12 @@ describe('Local Persistence', () => {
         const updatedTodo = await updateTodo(todo.id, { completed: true });
 
         expect(updatedTodo.completed).toBeTruthy();
+    });
+
+    it('can delete todo items', async () => {
+        await deleteTodo(1);
+
+        const todos = await getAllTodos();
+        expect(todos.length).toBe(1);
     });
 });

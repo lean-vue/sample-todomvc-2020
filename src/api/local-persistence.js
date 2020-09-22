@@ -32,7 +32,7 @@ export async function updateTodo(id, changes) {
 }
 
 export async function deleteTodo(id) {
-    const todos = _loadTodos;
+    const todos = _loadTodos();
     _saveTodos(todos.filter(t => t.id !== id));
 }
 
