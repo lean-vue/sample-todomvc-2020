@@ -4,7 +4,7 @@
       <h1>todos</h1>
       <TodosInput @create-todo="createTodo"></TodosInput>
     </header>
-    <TodosMain :todos="state.list"></TodosMain>
+    <TodosMain></TodosMain>
     <TodosActionbar></TodosActionbar>
   </section>
 </template>
