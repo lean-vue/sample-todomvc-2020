@@ -4,7 +4,7 @@
       <h1>todos</h1>
       <TodosInput @create-todo="createTodo"></TodosInput>
     </header>
-    <TodosMain :todos="todos" @toggle-todo="toggleTodo"></TodosMain>
+    <TodosMain :todos="state.list" @toggle-todo="toggleTodo"></TodosMain>
     <TodosActionbar></TodosActionbar>
   </section>
 </template>
@@ -13,25 +13,23 @@
 import TodosInput from '@/components/TodosInput';
 import TodosMain from '@/components/TodosMain';
 import TodosActionbar from '@/components/TodosActionbar';
-import {createTodo, getAllTodos, updateTodo} from '@/api/local-persistence';
+
+import store from '@/store/todos';
 
 export default {
   name: "TodosShell",
   data: () => ({
-    todos: []
+    state: store.state
   }),
-  async created() {
-    this.todos = await getAllTodos();
+  created() {
+    store.actions.loadTodos();
   },
   methods: {
-    async createTodo(title) {
-      const todo = await createTodo(title);
-      this.todos.push(todo);
+    createTodo(title) {
+      store.actions.createTodo(title);
     },
-    async toggleTodo(id) {
-      const todo = this.todos.find(t => t.id === id);
-      await updateTodo(id, { completed: !todo.completed });
-      todo.completed = !todo.completed;
+    toggleTodo(id) {
+      store.actions.toggleTodo(id);
     }
   },
   components: {TodosActionbar, TodosMain, TodosInput}
