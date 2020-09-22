@@ -4,7 +4,7 @@
     <div class="view">
       <input class="toggle" type="checkbox" :checked="todo.completed" @change="toggle">
       <label>{{ todo.title }}</label>
-      <button class="destroy"></button>
+      <button class="destroy" @click="destroy"></button>
     </div>
     <input class="edit" value="Create a TodoMVC template">
   </li>
@@ -18,6 +18,9 @@ export default {
   methods: {
     toggle() {
       this.$store.dispatch('todos/toggle', this.todo.id);
+    },
+    destroy() {
+      this.$store.dispatch('todos/destroy', this.todo.id);
     }
   }
 }

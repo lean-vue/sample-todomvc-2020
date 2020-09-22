@@ -1,4 +1,4 @@
-import {createTodo, getAllTodos, updateTodo} from '@/api/local-persistence';
+import {createTodo, deleteTodo, getAllTodos, updateTodo} from '@/api/local-persistence';
 
 export default {
     namespaced: true,
@@ -18,6 +18,9 @@ export default {
         todoUpdated(state, todo) {
             const todoToUpdate = state.list.find(t => t.id === todo.id);
             Object.assign(todoToUpdate, todo);
+        },
+        todoRemoved(state, id) {
+            state.list = state.list.filter(t => t.id !== id);
         }
     },
 
@@ -35,5 +38,9 @@ export default {
             const updatedTodo = await updateTodo(id, {completed: !todo.completed});
             context.commit('todoUpdated', updatedTodo);
         },
+        async destroy({ commit }, id) {
+            await deleteTodo(id);
+            commit('todoRemoved', id);
+        }
     }
 }
