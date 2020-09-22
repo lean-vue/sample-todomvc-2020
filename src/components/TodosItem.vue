@@ -10,6 +10,7 @@
         @keyup.enter="commitEdit"
         @keyup.esc="cancelEdit"
         @blur="commitEdit"
+        v-focus="editMode"
     >
   </li>
 </template>
@@ -37,6 +38,15 @@ export default {
     cancelEdit() {
       this.title = this.todo.title;
       this.editMode = false;
+    },
+  },
+  directives: {
+    'focus': {
+      update: function (el, binding) {
+        if (binding.value) {
+          el.focus();
+        }
+      }
     }
   }
 }
