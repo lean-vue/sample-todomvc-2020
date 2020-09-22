@@ -2,7 +2,7 @@
   <!-- List items should get the class `editing` when editing -->
   <li :class="{ completed: todo.completed }">
     <div class="view">
-      <input class="toggle" type="checkbox" :checked="todo.completed" @change="$emit('toggle')">
+      <input class="toggle" type="checkbox" :checked="todo.completed" @change="toggle">
       <label>{{ todo.title }}</label>
       <button class="destroy"></button>
     </div>
@@ -11,9 +11,16 @@
 </template>
 
 <script>
+import todos from '@/store/todos';
+
 export default {
   name: "TodosItem",
-  props: ['todo']
+  props: ['todo'],
+  methods: {
+    toggle() {
+      todos.actions.toggleTodo(this.todo.id);
+    }
+  }
 }
 </script>
 
