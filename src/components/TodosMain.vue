@@ -1,6 +1,8 @@
 <template>
   <section class="main" v-if="hasTodos">
-    <input id="toggle-all" class="toggle-all" type="checkbox" :checked="$store.getters['todos/isAllDone']">
+    <input id="toggle-all" class="toggle-all" type="checkbox"
+           :checked="isAllDone"
+    >
     <label for="toggle-all">Mark all as complete</label>
     <TodosList></TodosList>
   </section>
@@ -12,7 +14,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: "TodosMain",
   components: {TodosList},
-  computed: mapGetters('todos', ['hasTodos'])
+  computed: mapGetters('todos', ['hasTodos', 'isAllDone']),
 }
 </script>
 
