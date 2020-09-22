@@ -8,7 +8,7 @@ export default {
     },
 
     getters: {
-        todos: state => state.list,
+        list: state => state.list,
         hasTodos: state => state.list.length > 0,
         isAllDone: state => state.list.findIndex(t => !t.completed) === -1,
         hasNoCompletedTodos: state => state.list.findIndex(t => t.completed) !== -1,

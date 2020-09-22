@@ -19,18 +19,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: "TodosActionbar",
   computed: {
-    activeCount() {
-      return this.$store.getters['todos/activeCount'];
-    },
-    hasNoCompletedTodos() {
-      return this.$store.getters['todos/hasNoCompletedTodos'];
-    },
-    hasTodos() {
-      return this.$store.getters['todos/hasTodos'];
-    }
+    ...mapGetters('todos', [
+        'hasTodos', 'activeCount', 'hasNoCompletedTodos'
+    ])
   }
 }
 </script>

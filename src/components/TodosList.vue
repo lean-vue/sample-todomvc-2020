@@ -6,14 +6,13 @@
 
 <script>
 import TodosItem from '@/components/TodosItem';
+import { mapGetters } from 'vuex';
 
 export default {
   name: "TodosList",
   components: {TodosItem},
   computed: {
-    todos() {
-      return this.$store.getters['todos/todos'];
-    }
+    ...mapGetters('todos', { todos: 'list' })
   }
 }
 </script>
