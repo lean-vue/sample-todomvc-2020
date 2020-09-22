@@ -46,6 +46,10 @@ export default {
             const updatedTodo = await updateTodo(id, {completed: !todo.completed});
             context.commit('todoUpdated', updatedTodo);
         },
+        async update(context, { id, title }) {
+            const updatedTodo = await updateTodo(id, {title});
+            context.commit('todoUpdated', updatedTodo);
+        },
         async destroy({ commit }, id) {
             await deleteTodo(id);
             commit('todoRemoved', id);
