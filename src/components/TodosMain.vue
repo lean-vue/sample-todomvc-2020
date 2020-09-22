@@ -3,14 +3,15 @@
   <section class="main">
     <input id="toggle-all" class="toggle-all" type="checkbox">
     <label for="toggle-all">Mark all as complete</label>
-    <TodosList></TodosList>
+    <TodosList :todos="todos"></TodosList>
   </section>
 </template>
 
 <script>
 import TodosList from '@/components/TodosList';
 export default {
-name: "TodosMain",
+  name: "TodosMain",
+  props: ['todos'],
   components: {TodosList}
 }
 </script>
