@@ -53,6 +53,13 @@ export default {
         async destroy({ commit }, id) {
             await deleteTodo(id);
             commit('todoRemoved', id);
+        },
+        async syncAllCompletedStates(context, completedState ) {
+            context.state.list.forEach(t => {
+                if(t.completed !== completedState) {
+                    context.dispatch('toggle', t.id);
+                }
+            })
         }
     }
 }
