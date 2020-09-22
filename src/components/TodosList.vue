@@ -6,13 +6,13 @@
 
 <script>
 import TodosItem from '@/components/TodosItem';
-import store from '@/store/todos';
+
 export default {
   name: "TodosList",
   components: {TodosItem},
   computed: {
     todos() {
-      return store.state.list;
+      return this.$store.state.list;
     }
   }
 }

@@ -11,14 +11,13 @@
 </template>
 
 <script>
-import store from '@/store/todos';
 
 export default {
   name: "TodosItem",
   props: ['todo'],
   methods: {
     toggle() {
-      store.actions.toggleTodo(this.todo.id);
+      this.$store.dispatch('toggleTodo', this.todo.id);
     }
   }
 }

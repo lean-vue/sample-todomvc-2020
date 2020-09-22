@@ -1,23 +1,37 @@
 import {createTodo, getAllTodos, updateTodo} from '@/api/local-persistence';
 
-const state = {
-    list: []
-};
-
 export default {
-    state,
-    actions: {
-        loadTodos() {
-            getAllTodos().then(todos => state.list = todos);
+    state: {
+        list: []
+    },
+
+    // mutations, synchronous state changes
+    mutations: {
+        todosLoaded(state, todos) {
+            state.list = todos;
         },
-        async createTodo(title) {
-            const todo = await createTodo(title);
+        todoCreated(state, todo) {
             state.list.push(todo);
         },
-        async toggleTodo(id) {
-            const todo = state.list.find(t => t.id === id);
-            await updateTodo(id, { completed: !todo.completed });
-            todo.completed = !todo.completed;
+        todoUpdated(state, todo) {
+            const todoToUpdate = state.list.find(t => t.id === todo.id);
+            Object.assign(todoToUpdate, todo);
+        }
+    },
+
+    // actions, may be asynchronous, commit mutations
+    actions: {
+        loadTodos({ commit }) {
+            getAllTodos().then(todos => commit('todosLoaded', todos));
+        },
+        async createTodo({ commit }, title) {
+            const todo = await createTodo(title);
+            commit('todoCreated', todo);
+        },
+        async toggleTodo(context, id) {
+            const todo = context.state.list.find(t => t.id === id);
+            const updatedTodo = await updateTodo(id, {completed: !todo.completed});
+            context.commit('todoUpdated', updatedTodo);
         }
     }
 }
