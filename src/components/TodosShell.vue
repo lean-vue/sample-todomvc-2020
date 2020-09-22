@@ -17,7 +17,7 @@ import TodosActionbar from '@/components/TodosActionbar';
 export default {
   name: "TodosShell",
   created() {
-    this.$store.dispatch('todos/loadTodos');
+    this.$store.dispatch('todos/load');
   },
   components: {TodosActionbar, TodosMain, TodosInput}
 }

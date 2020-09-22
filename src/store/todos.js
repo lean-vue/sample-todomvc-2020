@@ -23,17 +23,17 @@ export default {
 
     // actions, may be asynchronous, commit mutations
     actions: {
-        loadTodos({ commit }) {
+        load({ commit }) {
             getAllTodos().then(todos => commit('todosLoaded', todos));
         },
-        async createTodo({ commit }, title) {
+        async create({ commit }, title) {
             const todo = await createTodo(title);
             commit('todoCreated', todo);
         },
-        async toggleTodo(context, id) {
+        async toggle(context, id) {
             const todo = context.state.list.find(t => t.id === id);
             const updatedTodo = await updateTodo(id, {completed: !todo.completed});
             context.commit('todoUpdated', updatedTodo);
-        }
+        },
     }
 }
