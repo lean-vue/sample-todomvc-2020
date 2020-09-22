@@ -1,6 +1,5 @@
 <template>
-  <!-- This footer should hidden by default and shown when there are todos -->
-  <footer class="footer">
+  <footer class="footer" v-if="hasTodos">
     <!-- This should be `0 items left` by default -->
     <span class="todo-count"><strong>{{ activeCount }}</strong> item left</span>
     <!-- Remove this if you don't implement routing -->
@@ -15,8 +14,7 @@
         <a href="#/completed">Completed</a>
       </li>
     </ul>
-    <!-- Hidden if no completed items are left ↓ -->
-    <button class="clear-completed">Clear completed</button>
+    <button v-if="hasNoCompletedTodos" class="clear-completed">Clear completed</button>
   </footer>
 </template>
 
@@ -25,7 +23,13 @@ export default {
   name: "TodosActionbar",
   computed: {
     activeCount() {
-      return this.$store.state.todos.list.reduce((count, t) => t.completed ? count : count + 1, 0);
+      return this.$store.getters['todos/activeCount'];
+    },
+    hasNoCompletedTodos() {
+      return this.$store.getters['todos/hasNoCompletedTodos'];
+    },
+    hasTodos() {
+      return this.$store.getters['todos/hasTodos'];
     }
   }
 }

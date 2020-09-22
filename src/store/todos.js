@@ -7,6 +7,14 @@ export default {
         list: []
     },
 
+    getters: {
+        todos: state => state.list,
+        hasTodos: state => state.list.length > 0,
+        isAllDone: state => state.list.findIndex(t => !t.completed) === -1,
+        hasNoCompletedTodos: state => state.list.findIndex(t => t.completed) !== -1,
+        activeCount: state => state.list.reduce((count, t) => t.completed ? count : count + 1, 0),
+    },
+
     // mutations, synchronous state changes
     mutations: {
         todosLoaded(state, todos) {
