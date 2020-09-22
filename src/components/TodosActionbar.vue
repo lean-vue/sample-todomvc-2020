@@ -14,12 +14,13 @@
         <a href="#/completed">Completed</a>
       </li>
     </ul>
-    <button v-if="hasNoCompletedTodos" class="clear-completed">Clear completed</button>
+    <button v-if="hasNoCompletedTodos" @click="destroyCompletedTodos"
+            class="clear-completed">Clear completed</button>
   </footer>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: "TodosActionbar",
@@ -27,7 +28,8 @@ export default {
     ...mapGetters('todos', [
         'hasTodos', 'activeCount', 'hasNoCompletedTodos'
     ])
-  }
+  },
+  methods: mapActions('todos', ['destroyCompletedTodos'])
 }
 </script>
 

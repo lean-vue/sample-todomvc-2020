@@ -60,6 +60,9 @@ export default {
                     context.dispatch('toggle', t.id);
                 }
             })
+        },
+        async destroyCompletedTodos(context) {
+            context.state.list.filter(t => t.completed).forEach(t => context.dispatch('destroy', t.id));
         }
     }
 }
