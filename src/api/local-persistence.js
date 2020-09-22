@@ -22,7 +22,7 @@ export async function createTodo(title) {
 }
 
 export async function updateTodo(id, changes) {
-    const todos = _loadTodos;
+    const todos = _loadTodos();
 
     const todo = todos.find(t => t.id === id);
     Object.assign(todo, changes);
