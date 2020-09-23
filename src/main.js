@@ -6,6 +6,8 @@ import App from './App.vue';
 // TodoMVC styles
 import 'todomvc-app-css/index.css';
 import todos from '@/store/todos';
+import VueRouter from 'vue-router';
+import TodosShell from '@/components/TodosShell';
 
 Vue.config.productionTip = false
 
@@ -13,7 +15,17 @@ Vue.config.productionTip = false
 Vue.use(Vuex);
 const store = new Vuex.Store({ modules: { todos } });
 
+// Vue Router
+Vue.use(VueRouter);
+const router = new VueRouter({
+  routes: [
+    { path: '/', component: TodosShell },
+    { path: '/:filter', component: TodosShell }
+  ]
+});
+
 new Vue({
   render: h => h(App),
-  store
+  store,
+  router
 }).$mount('#app')

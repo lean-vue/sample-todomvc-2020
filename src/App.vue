@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <TodosShell></TodosShell>
+    <router-view></router-view>
     <footer class="info">
       <p>Double-click to edit a todo</p>
       <!-- Remove the below line ↓ -->
@@ -14,10 +14,8 @@
 
 <script>
 
-import TodosShell from '@/components/TodosShell';
 export default {
   name: 'App',
-  components: {TodosShell},
 }
 </script>
 

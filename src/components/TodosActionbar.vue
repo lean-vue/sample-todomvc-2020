@@ -5,13 +5,13 @@
     <!-- Remove this if you don't implement routing -->
     <ul class="filters">
       <li>
-        <a class="selected" href="#/">All</a>
+        <router-link exact-active-class="selected" to="/">All</router-link>
       </li>
       <li>
-        <a href="#/active">Active</a>
+        <router-link active-class="selected" to="/active">Active</router-link>
       </li>
       <li>
-        <a href="#/completed">Completed</a>
+        <router-link active-class="selected" to="/completed">Completed</router-link>
       </li>
     </ul>
     <button v-if="hasNoCompletedTodos" @click="destroyCompletedTodos"
