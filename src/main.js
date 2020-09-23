@@ -19,8 +19,8 @@ const store = new Vuex.Store({ modules: { todos } });
 Vue.use(VueRouter);
 const router = new VueRouter({
   routes: [
-    { path: '/', component: TodosShell },
-    { path: '/:filter', component: TodosShell }
+    { path: '/:filter(active|completed)?', component: TodosShell },
+    { path: '*', redirect: '/'}
   ]
 });
 
