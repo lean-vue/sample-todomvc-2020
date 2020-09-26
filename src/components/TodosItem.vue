@@ -1,5 +1,4 @@
 <template>
-  <!-- List items should get the class `editing` when editing -->
   <li :class="{ completed: todo.completed, editing: editMode }">
     <div class="view">
       <input class="toggle" type="checkbox" :checked="todo.completed" @change="toggle(todo.id)">
