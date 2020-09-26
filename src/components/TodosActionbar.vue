@@ -1,8 +1,8 @@
 <template>
   <footer class="footer" v-if="hasTodos">
-    <!-- This should be `0 items left` by default -->
-    <span class="todo-count"><strong>{{ activeCount }}</strong> item left</span>
-    <!-- Remove this if you don't implement routing -->
+    <span class="todo-count"><strong>{{ activeCount }}</strong>
+      {{ activeCount === 1 ? 'item' : 'items' }} left
+    </span>
     <ul class="filters">
       <li>
         <router-link exact-active-class="selected" to="/">All</router-link>
