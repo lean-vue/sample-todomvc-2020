@@ -8,7 +8,8 @@ export default {
     },
 
     getters: {
-        list: state => state.list,
+        list: (state, getters, rootState) => rootState.filter.visibility === '' ?
+            state.list : state.list.filter(t => t.completed === (rootState.filter.visibility==='completed')),
         hasTodos: state => state.list.length > 0,
         isAllDone: state => state.list.findIndex(t => !t.completed) === -1,
         hasNoCompletedTodos: state => state.list.findIndex(t => t.completed) !== -1,
